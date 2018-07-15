@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+$primary-palette: mat-palette($mat-green);
+$accent-palette: mat-palette($mat-brown);
+
+@function getColor($palette: 'primary', $key: 400) {
+  @if ($palette == 'primary') {
+    @return map_get($primary-palette, $key);
+  } @else {
+    @return map_get($accent-palette, $key);
+  }
+}

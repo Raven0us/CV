@@ -1,0 +1,6 @@
+.idea
+.vagrant
+
+/server/config-local.json
+
+node_modules/
