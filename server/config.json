@@ -5,6 +5,9 @@
     "port": "27017",
     "name": "whatever"
   },
+  "jwt": {
+    "salt": "randomsalt"
+  },
   "server": {
   }
 }
