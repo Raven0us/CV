@@ -24,7 +24,6 @@ export class AboutComponent implements OnInit {
 
     if (token) {
       this.authService.authenticate(token).subscribe((res) => {
-        console.log(res);
         this.isAllowed = true;
         $paramHandler.unsubscribe();
         console.log(AuthService.getToken());

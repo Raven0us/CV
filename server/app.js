@@ -45,7 +45,8 @@ app.set('salt', config.jwt.salt);
 
 app.use((req, res, next) => {
 	res.append('Content-Type', 'application/json');
-	res.append("Access-Control-Allow-Origin", "http://localhost:667");
+	res.append('Access-Control-Allow-Origin', 'http://localhost:667');
+	res.append('Access-Control-Allow-Headers', 'X-Access-Token');
 	next();
 });
 

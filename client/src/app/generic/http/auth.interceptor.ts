@@ -7,7 +7,7 @@ import {AuthService} from "@services/auth.service";
 
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) {
+  constructor() {
 
   }
 

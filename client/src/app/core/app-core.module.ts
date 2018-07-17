@@ -12,6 +12,7 @@ import {HomeComponent} from "@pages/home/home.component";
 import {CommonModule} from "@angular/common";
 import {ContactComponent} from "@pages/contact/contact.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {AuthInterceptor} from "@app/app/generic/http/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     ContactComponent
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: EndpointInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: EndpointInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ]
 })
 

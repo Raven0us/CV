@@ -17,7 +17,7 @@ export class AuthService {
     let params = new HttpParams().set("token", token);
 
     return this.httpClient.get<Observable<Response>>(this.route, {params}).pipe(
-      tap(authResult => AuthService.setSession),
+      tap(authResult => AuthService.setSession(authResult)),
       shareReplay()
     );
   }
@@ -26,7 +26,6 @@ export class AuthService {
     const expiresIn = moment().add(authResult.expiresIn, 'second');
 
     localStorage.setItem('token', authResult.token);
-    console.log('213131');
     localStorage.setItem('expires_in', JSON.stringify(expiresIn.valueOf()));
   }
 

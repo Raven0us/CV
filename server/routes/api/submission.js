@@ -5,7 +5,7 @@ let SubmissionHandler = new SubmissionController();
 
 router.options('/create', (req, res) => {
 	res.header('Access-Control-Allow-Methods', 'POST');
-	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, X-Access-Token');
 	res.sendStatus(200);
 });
 
