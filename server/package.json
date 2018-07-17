@@ -30,6 +30,7 @@
     "@controllers": "controllers",
     "@models": "models",
     "@routes": "routes",
-    "@services": "services"
+    "@services": "services",
+    "@private": "private"
   }
 }

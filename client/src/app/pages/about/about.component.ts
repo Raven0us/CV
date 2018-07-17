@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "@services/auth.service";
 import {ActivatedRoute} from "@angular/router";
 import {tap} from "rxjs/internal/operators";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs/index";
 
 @Component({
   selector: 'app-about',
@@ -12,7 +14,7 @@ import {tap} from "rxjs/internal/operators";
 export class AboutComponent implements OnInit {
   isAllowed = false;
 
-  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute) {
+  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private httpClient: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -34,4 +36,17 @@ export class AboutComponent implements OnInit {
 
     this.isAllowed = AuthService.isAllowed();
   };
+
+  fetchPdf(): Observable<Response>|boolean {
+    /**
+     * @type {boolean | Observable<any>}
+     */
+    let $pdf = this.authService.fetchPdf();
+
+    if (typeof $pdf === "boolean") return false;
+
+    $pdf.subscribe((res) => {
+      window.location.assign(URL.createObjectURL(res));
+    })
+  }
 }

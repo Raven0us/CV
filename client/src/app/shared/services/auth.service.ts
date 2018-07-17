@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import * as moment from "moment";
-import {shareReplay, tap} from "rxjs/internal/operators";
+import {map, shareReplay, tap} from "rxjs/internal/operators";
 import {Observable} from "rxjs/index";
 
 @Injectable({
@@ -41,5 +41,17 @@ export class AuthService {
 
   public static getToken() {
     return localStorage.getItem('token') ? localStorage.getItem('token') : null;
+  }
+
+  public fetchPdf(): boolean | Observable<any> {
+    if (!AuthService.isAllowed()) return false;
+
+    return this.httpClient.get(`${this.route}/pdf`, {
+      responseType: 'blob' as 'json'
+    }).pipe(
+      map(res => {
+        return new Blob([res], {type: 'application/pdf'});
+      })
+    );
   }
 }
