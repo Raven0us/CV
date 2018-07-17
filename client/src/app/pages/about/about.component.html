@@ -2,4 +2,6 @@
   about works!
 </p>
 
-<button type="button">Open PDF</button>
+<ng-container *ngIf="isAllowed">
+  <button type="button">Open PDF</button>
+</ng-container>

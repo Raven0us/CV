@@ -13,10 +13,10 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {
   }
 
-  authenticate(token: string) {
+  authenticate(token: string): Observable<any> {
     let params = new HttpParams().set("token", token);
 
-    return this.httpClient.get<Observable<Response>>(this.route, {params}).pipe(
+    return this.httpClient.get(this.route, {params}).pipe(
       tap(authResult => AuthService.setSession(authResult)),
       shareReplay()
     );

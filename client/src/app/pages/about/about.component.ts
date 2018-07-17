@@ -23,7 +23,7 @@ export class AboutComponent implements OnInit {
     ).subscribe();
 
     if (token) {
-      this.authService.authenticate(token).subscribe((res) => {
+      this.authService.authenticate(token).subscribe(res => {
         this.isAllowed = true;
         $paramHandler.unsubscribe();
         console.log(AuthService.getToken());
@@ -31,5 +31,7 @@ export class AboutComponent implements OnInit {
         console.log(e);
       });
     }
+
+    this.isAllowed = AuthService.isAllowed();
   };
 }
