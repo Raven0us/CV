@@ -29,7 +29,8 @@ router.use((req, res, next) => {
 		}
 	}
 
-	console.log(isValid);
+	if (isValid === false) return res.sendStatus(404);
+
 	next();
 });
 
